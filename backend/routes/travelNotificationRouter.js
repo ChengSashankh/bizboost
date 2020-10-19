@@ -2,12 +2,21 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/add', function (req, res) {
-    res.end('Add itinerary end point');
+router.post('/add', function (req, res) {
+    let { itinerary, PAN, secret } = req.body;
+    res.json({
+        "authorized": true,
+        itinerary
+    });
+    res.end();
 });
 
-router.get('/delete', function (req, res) {
-    res.end('Remove itinerary end point');
+router.delete('/delete', function (req, res) {
+    let { itinerary, PAN, secret } = req.body;
+    res.json({
+        "removed": true
+    });
+    res.end();
 });
 
 module.exports = router;
