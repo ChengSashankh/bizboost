@@ -59,9 +59,10 @@
                 }
             });
             const myJson = await response.json();
-            console.log(myJson)
+            console.log(myJson.results[0])
+            const value = myJson.results[0];
+            alert(value.name)
         }
-        console.log("response")
     </script>
 </body>
 
