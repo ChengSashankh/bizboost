@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "c7857c6d-d834-48c8-9595-f45f3d197c57",
+		"name": "Testing Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Merchant Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"latitude\": \"\",\n    \"longitude\": \"\",\n    \"radius\": \"\",\n    \"maxResults\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/merchant/search",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"merchant",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ATM Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"latitude\": \"\",\n    \"longitude\": \"\",\n    \"radius\": \"\",\n    \"maxResults\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/ATM/search",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ATM",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Itinerary",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"itinerary\": {\n    \"returnDate\": \"2021-05-28\",\n    \"partnerBid\": \"12345678\",\n    \"departureDate\": \"2019-05-21\",\n    \"destinations\": [\n        {\n            \"country\": \"840\",\n            \"state\": \"CA\"\n        }\n    ]\n  },\n  \"PANs\": [ {\"cardAccountNumber\": \"4645191800301234\"} ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/travel/add",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"travel",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
