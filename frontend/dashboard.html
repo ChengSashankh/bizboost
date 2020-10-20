@@ -65,15 +65,15 @@ All Right Reserved &copy; 2018 by APEC.COM
 </div>
  <script>
         const ATM=async()=> {
-            const response = await fetch('http://localhost:3000/ATM/search', {
+     /*       const response = await fetch('http://localhost:3000/ATM/search', {
                 method: 'POST',
                 body: null, // string or object
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-            const myjson= await response.json();
-    /*        const myjson = {
+            const myjson= await response.json();*/
+            const myjson = {
         "results": [
             {
                 name: "ATM 1",
@@ -94,7 +94,7 @@ All Right Reserved &copy; 2018 by APEC.COM
                 longitude: "12.12"
             }
         ]
-    };*/
+    };
             const myjson_str = JSON.stringify(myjson);
             localStorage.setItem("ATMS", myjson_str );
             location.href='Atm.html';
