@@ -1,18 +1,69 @@
 <!DOCTYPE html>
 <html>
+<head>
 <title>Bussiness Booster</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="dashboard.css">
-
+<link rel="stylesheet" href="template.css" />
+</head>
 <body>
-    <div class="Buttons">
-    <button type="button" onclick="Card()" id="button1">Card ON/OFF</button>
-    <button type="button" onclick="ATM()"  id="button2">ATM Locator</button>
-    <button type="button" onclick="myFunction()" id="button3">Merchant Locator</button>
-    <button type="button" onclick="myFunction()" id="button4">Recommendation</button>
+<div id="main">
+
+<header>
+<div id="header">
+  <div id="title">Travel Booster</div>
+  <div id="caption">One more step to travel</div>
+</div>
+</header>
+
+<nav>
+<div id="menu">
+  <div id="item1"><a href="index.html">HOME</a></div>
+  <div id="item2"><a href="about.html">ABOUT</a></div>
+  <div id="item3"><a href="services.html">SERVICES</a></div>
+  <div id="item4"><a href="gallery.html">GALLERY</a></div>
+  <div id="item5"><a href="contact.html">CONTACT</a></div>
+</div>
+</nav>
+
+
+<section>
+<div id="content">
+
+    <div id="container1">
+        <h3>ATM Locator</h3>
+        <p>Find the nearest ATM where you can use your Visa card</p>
+        <button type="button" onclick="ATM()"  id="button1">Locate ATM</button>
     </div>
-    <script>
+
+    <div id="container2">
+        <h3 id="heading">Card ON/OFF</h3>
+        <p>Resume operations on your card</p>
+        <button type="button" onclick="Card()"  id="button2">Travel Notification Service</button>
+    </div>
+
+    <div id="container3">
+        <h3>Merchant Suggestions</h3>
+        <p>Get merchants of your choice</p>
+        <button type="button" onclick="Suggest()"  id="button3">Recommended Merchants</button>
+    </div>
+
+    <div id="container4">
+        <h3 id="heading">Merchant Locator</h3>
+        <p style="left: 20px ">Find the nearest Merchant where you can get your products</p>
+        <button type="button" onclick="Merchant()"  id="button4">Locate Merchants</button>
+    </div>
+
+</div>
+</section>
+
+<footer>
+<div id="footer">
+All Right Reserved &copy; 2018 by APEC.COM
+</div>
+</footer>
+</div>
+ <script>
         const ATM=async()=> {
             const response = await fetch('http://localhost:3000/ATM/search', {
                 method: 'POST',
@@ -50,5 +101,4 @@
         }
     </script>
 </body>
-
 </html>
