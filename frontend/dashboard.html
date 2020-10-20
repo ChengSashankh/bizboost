@@ -3,49 +3,52 @@
 <title>Bussiness Booster</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    button {
-        position: absolute;
-        left: 40%;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 5%;
-        color: white;
-        padding: 1%;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 1%;
-        cursor: pointer;
-    }
-
-    button:hover {
-        color: blue;
-    }
-
-    #button1 {
-        top: 30%;
-    }
-
-    #button2 {
-        top: 40%;
-    }
-
-    #button3 {
-        top: 50%;
-    }
-
-    #button4 {
-        top: 60%;
-    }
-</style>
+<link rel="stylesheet" href="dashboard.css">
 
 <body>
+    <div class="Buttons">
     <button type="button" onclick="Card()" id="button1">Card ON/OFF</button>
-    <button type="button" onclick="location.href='Atm.html';"  id="button2">ATM Locator</button>
+    <button type="button" onclick="ATM()"  id="button2">ATM Locator</button>
     <button type="button" onclick="myFunction()" id="button3">Merchant Locator</button>
     <button type="button" onclick="myFunction()" id="button4">Recommendation</button>
+    </div>
+    <script>
+        const ATM=async()=> {
+            const response = await fetch('http://localhost:3000/ATM/search', {
+                method: 'POST',
+                body: null, // string or object
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const myjson= await response.json();
+    /*        const myjson = {
+        "results": [
+            {
+                name: "ATM 1",
+                streetAddress: "1 Sample Road, 123456",
+                latitude: "123.123",
+                longitude: "12.12"
+            },
+            {
+                name: "ATM 2",
+                streetAddress: "1 Sample Road, 123456",
+                latitude: "123.123",
+                longitude: "12.12"
+            },
+            {
+                name: "ATM 3",
+                streetAddress: "1 Sample Road, 123456",
+                latitude: "123.123",
+                longitude: "12.12"
+            }
+        ]
+    };*/
+            const myjson_str = JSON.stringify(myjson);
+            localStorage.setItem("ATMS", myjson_str );
+            location.href='Atm.html';
+        }
+    </script>
 </body>
 
 </html>
