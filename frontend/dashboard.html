@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home Page</title>
+<title>Bussiness Booster</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="template.css" />
 </head>
 <body>
@@ -31,25 +33,25 @@
     <div id="container1">
         <h3>ATM Locator</h3>
         <p>Find the nearest ATM where you can use your Visa card</p>
-        <button type="button" onclick="location.href='Atm.html';"  id="button1">Locate ATM</button>
+        <button type="button" onclick="ATM()"  id="button1">Locate ATM</button>
     </div>
 
     <div id="container2">
         <h3 id="heading">Card ON/OFF</h3>
         <p>Resume operations on your card</p>
-        <button type="button" onclick="location.href='Atm.html';"  id="button2">Travel Notification Service</button>
+        <button type="button" onclick="Card()"  id="button2">Travel Notification Service</button>
     </div>
 
     <div id="container3">
         <h3>Merchant Suggestions</h3>
         <p>Get merchants of your choice</p>
-        <button type="button" onclick="location.href='Atm.html';"  id="button3">Recommended Merchants</button>
+        <button type="button" onclick="Suggest()"  id="button3">Recommended Merchants</button>
     </div>
 
     <div id="container4">
         <h3 id="heading">Merchant Locator</h3>
         <p style="left: 20px ">Find the nearest Merchant where you can get your products</p>
-        <button type="button" onclick="location.href='Atm.html';"  id="button4">Locate Merchants</button>
+        <button type="button" onclick="Merchant()"  id="button4">Locate Merchants</button>
     </div>
 
 </div>
@@ -61,5 +63,42 @@ All Right Reserved &copy; 2018 by APEC.COM
 </div>
 </footer>
 </div>
+ <script>
+        const ATM=async()=> {
+            const response = await fetch('http://localhost:3000/ATM/search', {
+                method: 'POST',
+                body: null, // string or object
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const myjson= await response.json();
+    /*        const myjson = {
+        "results": [
+            {
+                name: "ATM 1",
+                streetAddress: "1 Sample Road, 123456",
+                latitude: "123.123",
+                longitude: "12.12"
+            },
+            {
+                name: "ATM 2",
+                streetAddress: "1 Sample Road, 123456",
+                latitude: "123.123",
+                longitude: "12.12"
+            },
+            {
+                name: "ATM 3",
+                streetAddress: "1 Sample Road, 123456",
+                latitude: "123.123",
+                longitude: "12.12"
+            }
+        ]
+    };*/
+            const myjson_str = JSON.stringify(myjson);
+            localStorage.setItem("ATMS", myjson_str );
+            location.href='Atm.html';
+        }
+    </script>
 </body>
 </html>
