@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const {
     cardRouter,
     merchantLocatorRouter,
@@ -9,6 +10,7 @@ const {
 
 // Initialize express app
 const app = express();
+app.use(cors())
 app.use(express.json())
 
 // Define API routes
