@@ -8,82 +8,97 @@
 </head>
 
 <body>
-<div id="main">
+    <div id="main">
 
-<header>
-<div id="header">
-  <div id="title">Travel Booster</div>
-  <div id="caption">One more step to travel</div>
-</div>
-</header>
+        <header>
+            <div id="header">
+                <div id="title">Travel Booster</div>
+                <div id="caption">One more step to travel</div>
+            </div>
+        </header>
 
-<nav>
-<div id="menu">
-  <div id="item1"><a href="index.html">HOME</a></div>
-  <div id="item2"><a href="about.html">ABOUT</a></div>
-  <div id="item3"><a href="services.html">SERVICES</a></div>
-  <div id="item4"><a href="gallery.html">GALLERY</a></div>
-  <div id="item5"><a href="contact.html">CONTACT</a></div>
-</div>
-</nav>
-<section>
-<div id="container">
-    <p id="showData"></p>
-</div>
-</section>
+        <nav>
+            <div id="menu">
+                <div id="item1"><a href="index.html">HOME</a></div>
+                <div id="item2"><a href="about.html">ABOUT</a></div>
+                <div id="item3"><a href="services.html">SERVICES</a></div>
+                <div id="item4"><a href="gallery.html">GALLERY</a></div>
+                <div id="item5"><a href="contact.html">CONTACT</a></div>
+            </div>
+        </nav>
+        <section>
+            <div id="container">
+                <p id="showData"></p>
+            </div>
+        </section>
 
 
-<footer>
-<div id="footer">
-All Right Reserved &copy; 2018 by APEC.COM
-</div>
-</footer>
-</div>
+        <footer>
+            <div id="footer">
+                All Right Reserved &copy; 2018 by APEC.COM
+            </div>
+        </footer>
+    </div>
 
-<script>
-    var ATMS_temp = localStorage.getItem("ATMS");
-    localStorage.removeItem("ATMS");
-    var ATMS = JSON.parse(ATMS_temp);
-    var myBooks = ATMS.results;
-    // EXTRACT VALUE FOR HTML HEADER. 
-    // ('name', 'Street Address', 'Latitude' and 'Longitude')
-    var col = [];
-    for (var i = 0; i < myBooks.length; i++) {
-        for (var key in myBooks[i]) {
-            if (col.indexOf(key) === -1) {
-                col.push(key);
+    <script>
+        var ATMS_temp = localStorage.getItem("ATMS");
+        localStorage.removeItem("ATMS");
+        var ATMS = JSON.parse(ATMS_temp);
+        var myBooks = ATMS.responseData[0].matchedLocations;
+        console.log(ATMS.responseData[0].matchedLocations);
+        // EXTRACT VALUE FOR HTML HEADER. 
+        // ('name', 'Street Address', 'Latitude' and 'Longitude')
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i].location.coordinates) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
             }
         }
-    }
+        col.push("place")
+        col.push("score")
+        col.push("Map Location")
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
 
-    // CREATE DYNAMIC TABLE.
-    var table = document.createElement("table");
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
-    // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+        var tr = table.insertRow(-1);                   // TABLE ROW.
 
-    var tr = table.insertRow(-1);                   // TABLE ROW.
-
-    for (var i = 0; i < col.length; i++) {
-        var th = document.createElement("th");      // TABLE HEADER.
-        th.innerHTML = col[i];
-        tr.appendChild(th);
-    }
-
-    // ADD JSON DATA TO THE TABLE AS ROWS.
-    for (var i = 0; i < myBooks.length; i++) {
-
-        tr = table.insertRow(-1);
-
-        for (var j = 0; j < col.length; j++) {
-            var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML = myBooks[i][col[j]];
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
         }
-    }
 
-    // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-    var divContainer = document.getElementById("showData");
-    divContainer.innerHTML = "";
-    divContainer.appendChild(table);
-</script>
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length - 3; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = myBooks[i].location.coordinates[col[j]];
+            }
+            var tabCell = tr.insertCell(-1);
+            tabCell.innerHTML = myBooks[i].location.placeName;
+            var tabCell = tr.insertCell(-1);
+            tabCell.innerHTML = myBooks[i].location.score;
+            var tabCell = tr.insertCell(-1);
+            tabCell.innerHTML = 'Click Here';
+            tabCell.id=i;
+            tabCell.onclick = function (e) {
+                var value=parseInt(e.target.id);
+                location.href = "https://www.google.com/maps/search/?api=1&query=" + myBooks[value].location.coordinates.latitude + "," + myBooks[value].location.coordinates.longitude;
+            };
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    </script>
+
 
 </html>
