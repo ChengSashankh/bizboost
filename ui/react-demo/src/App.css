@@ -1,0 +1,22 @@
+.image {
+  width: 80vw;
+  height: 40vh;
+}
+
+.grid {
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.button {
+  margin: 2vh !important;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
