@@ -18,6 +18,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ATM from './ATM'
 import Home from './Home'
 import Merchant from './Merchant';
+import Notification from './Notification';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +41,7 @@ function App() {
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/atm" component={ATM}></Route>
         <Route exact path="/merchant" component={Merchant}></Route>
-        <Route exact path="/card" component={ATM}></Route>
+        <Route exact path="/notification" component={Notification}></Route>
       </Router>
     </div>
     );

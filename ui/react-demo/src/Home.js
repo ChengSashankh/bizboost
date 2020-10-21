@@ -64,7 +64,7 @@ class Home extends Component {
               </Typography>
             </CardContent>
           <CardActions>
-            <Button variant="contained" color="primary" size="large" fullWidth>Travel Notification Service</Button>
+            <Button variant="contained" color="primary" size="large" fullWidth><Link to="/notification">Travel Notification Service</Link></Button>
           </CardActions>
         </Card>
           </Grid>
