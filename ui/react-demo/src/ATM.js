@@ -72,6 +72,9 @@ class ATM extends Component {
                 </AppBar>
 
                 <Grid container spacing={2} className="grid">
+                <Grid item xs={12} className="button">
+                    <Typography variant="h4">Need to withdraw some cash?</Typography>
+                </Grid>
                     <Grid item xs={12}>
                         <Button onClick={() => this.setState({clicked: !this.state.clicked})} variant="contained" color="primary" className="button">ATMs Near Me</Button>
                     </Grid>

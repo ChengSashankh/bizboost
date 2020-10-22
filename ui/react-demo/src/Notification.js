@@ -71,6 +71,9 @@ class Notification extends Component {
                 </AppBar>
 
                 <Grid container spacing={2} className="grid">
+                <Grid item xs={12} className="button">
+                    <Typography variant="h4">Click. Authorize. Go</Typography>
+                </Grid>
                     <Grid item xs={12}>
                     <FormControl variant="filled" >
         <InputLabel id="demo-simple-select-filled-label">Destination City</InputLabel>

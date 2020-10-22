@@ -59,6 +59,9 @@ class Merchant extends Component {
                 </AppBar>
 
                 <Grid container spacing={2} className="grid">
+                <Grid item xs={12} className="button">
+                    <Typography variant="h4">Looking for merchants who accept your card?</Typography>
+                </Grid>
                     <Grid item xs={12}>
                         <TextField variant="standard" placeholder="starbucks" className="button"></TextField>
                         <Button onClick={() => this.setState({clicked: !this.state.clicked})} variant="contained" color="primary" className="button">Search</Button>
