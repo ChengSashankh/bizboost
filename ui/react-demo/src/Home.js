@@ -79,7 +79,7 @@ class Home extends Component {
               </Typography>
             </CardContent>
           <CardActions>
-            <Button variant="contained" color="primary" size="large" fullWidth>Recommended Merchants</Button>
+            <Button variant="contained" color="primary" size="large" fullWidth><Link to="/recommend">Recommended Merchants</Link></Button>
           </CardActions>
         </Card>
           </Grid>

@@ -19,6 +19,7 @@ import ATM from './ATM'
 import Home from './Home'
 import Merchant from './Merchant';
 import Notification from './Notification';
+import Recommender from './Recommender';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +43,7 @@ function App() {
         <Route exact path="/atm" component={ATM}></Route>
         <Route exact path="/merchant" component={Merchant}></Route>
         <Route exact path="/notification" component={Notification}></Route>
+        <Route exact path="/recommend" component={Recommender}></Route>
       </Router>
     </div>
     );
